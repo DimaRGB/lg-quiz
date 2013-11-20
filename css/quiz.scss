@@ -1,0 +1,36 @@
+$quiz-width: 500px;
+$imgPath: '/img/';
+$arrow-width: 130px;
+$arrow-height: 25px;
+
+.quiz {
+	width: $quiz-width;
+	position: relative;
+	.questions {
+		
+		margin: 0 auto;
+		.question {
+
+		}
+	}
+	.arrow-block {
+		position: relative;
+		margin-top: 20px;
+		.arrow {
+			position: absolute;
+			margin: 8px;
+			width: $arrow-width;
+			height: $arrow-height;
+			background-image: url($imgPath + 'arrow.png');
+			cursor: pointer;
+			&.prev {
+				left: 0;
+				background-position: 0 $arrow-height;
+			}
+			&.next {
+				right: 0;
+				background-position: 0 0;
+			}
+		}
+	}
+}
