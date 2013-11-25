@@ -2,15 +2,15 @@ $quiz-width: 500px;
 $imgPath: '/img/';
 $arrow-width: 130px;
 $arrow-height: 25px;
+$question-size: 16px;
 
 .quiz {
 	width: $quiz-width;
 	position: relative;
 	.questions {
-		
 		margin: 0 auto;
 		.question {
-
+			font-size: $question-size;
 		}
 	}
 	.arrow-block {

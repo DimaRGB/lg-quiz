@@ -3,6 +3,9 @@
   position: relative; }
   .quiz .questions {
     margin: 0 auto; }
+    .quiz .questions .question {
+      font-size: 16px;
+      height: 16px; }
   .quiz .arrow-block {
     position: relative;
     margin-top: 20px; }
