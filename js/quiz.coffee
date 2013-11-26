@@ -1,31 +1,36 @@
 define
 
 	index: -1
+	animTime: 80
 
-	init: (@data = {}, @number = 4, @$quiz = $ '.quiz') ->
+	init: (@data = {}) ->
 		'use strict'
-		@maxIndex = @data.questions.length / @number ^ 0
-		@maxIndex-- if !(@data.questions.length % @number)
-		@$quiz.find('.questions').height(16 * @number);
+		@maxIndex = @data.pages.length
+		@$quiz = $ '.quiz'
+		@$quiz.removeClass 'spinner'
 		@
 
 	renderPage: (index) ->
 		'use strict'
 		return if index == @index || index < 0 || index > @maxIndex
-
 		@index = index
-		x = @index * @number
-		n = @number
+		page = @data.pages[@index]
 
-		$questions = @$quiz.find '.questions'
-		$questions.empty();
-		while( x < @data.questions.length && n-- )
-			@appendQuestion $questions, @data.questions[x++]
-		@
+		@$quiz.find('.question')
+			.fadeOut @animTime, ->
+				$(@).html page.question
+				$(@).fadeIn()
 
-	appendQuestion: ($questions, question) ->
-		$('<div class="question"><li>' + question + '</li></div>')
-			.appendTo($questions)
+		$answers = @$quiz.find '.answers'
+		$answers.fadeOut @animTime, =>
+			$answers.empty();
+			for answer in page.answers
+				@appendAnswer answer, $answers
+			$answers.fadeIn();
+
+	appendAnswer: (answer, $answers) ->
+		$('<div class="answer">' + answer + '</div>')
+			.appendTo($answers)
 
 	renderFirstPage: ->
 		'use strict'
@@ -41,8 +46,6 @@ define
 
 	run: ->
 		'use strict'
-		@$quiz.find('.arrow.prev').on 'click', =>
-			@renderPrevPage()
-		@$quiz.find('.arrow.next').on 'click', =>
+		@$quiz.find('.answers').on 'click', '.answer', =>
 			@renderNextPage()
 		@

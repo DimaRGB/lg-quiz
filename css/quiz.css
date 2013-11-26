@@ -1,24 +1,26 @@
 .quiz {
-  width: 500px;
-  position: relative; }
-  .quiz .questions {
-    margin: 0 auto; }
-    .quiz .questions .question {
-      font-size: 16px;
-      height: 16px; }
-  .quiz .arrow-block {
-    position: relative;
-    margin-top: 20px; }
-    .quiz .arrow-block .arrow {
-      position: absolute;
-      margin: 8px;
-      width: 130px;
-      height: 25px;
-      background-image: url("/img/arrow.png");
-      cursor: pointer; }
-      .quiz .arrow-block .arrow.prev {
-        left: 0;
-        background-position: 0 25px; }
-      .quiz .arrow-block .arrow.next {
-        right: 0;
-        background-position: 0 0; }
+  width: 900px;
+  position: relative;
+  margin: 30px auto; }
+  .quiz .question {
+    text-align: center; }
+  .quiz .answers {
+    margin: 50px auto;
+    text-align: center; }
+    .quiz .answers .answer {
+      display: inline-block;
+      margin: 10px;
+      width: 162px;
+      height: 162px;
+      background: url("/img/shape.png") no-repeat;
+      background-size: 100%;
+      cursor: pointer;
+      line-height: 162px;
+      font-size: 15px;
+      text-align: center; }
+
+.spinner {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: url("/img/spinner.gif") no-repeat; }

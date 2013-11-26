@@ -1,36 +1,56 @@
-$quiz-width: 500px;
 $imgPath: '/img/';
-$arrow-width: 130px;
-$arrow-height: 25px;
-$question-size: 16px;
+$quiz-width: 900px;
+$shape-width: 162px;
+$shape-size: 15px;
 
 .quiz {
 	width: $quiz-width;
 	position: relative;
-	.questions {
-		margin: 0 auto;
-		.question {
-			font-size: $question-size;
+	margin: 30px auto;
+	.question {
+		text-align: center;
+	}
+	.preview {
+
+	}
+	.answers {
+		margin: 50px auto;
+		text-align: center;
+		.answer {
+			display: inline-block;
+			margin: 10px;
+			width: $shape-width;
+			height: $shape-width;
+			background: url($imgPath + 'shape.png') no-repeat;
+			background-size: 100%;
+			cursor: pointer;
+			
+			line-height: $shape-width;
+			font-size: $shape-size;
+			text-align: center;
 		}
 	}
-	.arrow-block {
-		position: relative;
-		margin-top: 20px;
-		.arrow {
-			position: absolute;
-			margin: 8px;
-			width: $arrow-width;
-			height: $arrow-height;
-			background-image: url($imgPath + 'arrow.png');
-			cursor: pointer;
-			&.prev {
-				left: 0;
-				background-position: 0 $arrow-height;
-			}
-			&.next {
-				right: 0;
-				background-position: 0 0;
-			}
-		}
+	// .arrow-block {
+	// 	position: relative;
+	// 	margin-top: 20px;
+	// 	.arrow {
+	// 		position: absolute;
+	// 		margin: 8px;
+	// 		width: $arrow-width;
+	// 		height: $arrow-height;
+	// 		background-image: url($imgPath + 'arrow.png');
+	// 		cursor: pointer;
+	// 		&.prev {
+	// 			left: 0;
+	// 			background-position: 0 $arrow-height;
+	// 		}
+	// 		&.next {
+	// 			right: 0;
+	// 			background-position: 0 0;
+	// 		}
+	// 	}
+	// }
+	.spinner {
+		background: url($imgPath + 'spinner.gif') no-repeat;
 	}
 }
