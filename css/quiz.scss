@@ -30,26 +30,6 @@ $shape-size: 15px;
 			text-align: center;
 		}
 	}
-	// .arrow-block {
-	// 	position: relative;
-	// 	margin-top: 20px;
-	// 	.arrow {
-	// 		position: absolute;
-	// 		margin: 8px;
-	// 		width: $arrow-width;
-	// 		height: $arrow-height;
-	// 		background-image: url($imgPath + 'arrow.png');
-	// 		cursor: pointer;
-	// 		&.prev {
-	// 			left: 0;
-	// 			background-position: 0 $arrow-height;
-	// 		}
-	// 		&.next {
-	// 			right: 0;
-	// 			background-position: 0 0;
-	// 		}
-	// 	}
-	// }
 	.spinner {
 		background: url($imgPath + 'spinner.gif') no-repeat;
 	}
