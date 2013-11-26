@@ -12,5 +12,5 @@ requirejs.config
 requirejs ['jquery', 'data', 'quiz'], ($, _data, _quiz) -> $ ->
 	'use strict';
 	_quiz.init _data
-	_quiz.renderFirstPage()
+	_quiz.renderPage 0
 	_quiz.run()

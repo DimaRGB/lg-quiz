@@ -1,7 +1,6 @@
 define
 
 	index: -1
-	animTime: 80
 
 	init: (@data = {}) ->
 		'use strict'
@@ -15,37 +14,35 @@ define
 		return if index == @index || index < 0 || index > @maxIndex
 		@index = index
 		page = @data.pages[@index]
+		isDone = !page.next
+		animTime = 80
 
 		@$quiz.find('.question')
-			.fadeOut @animTime, ->
-				$(@).html page.question
-				$(@).fadeIn()
+			.fadeOut animTime, ->
+				$(@).html page.question + ' ' + index
+				$(@).fadeIn animTime
 
 		$answers = @$quiz.find '.answers'
-		$answers.fadeOut @animTime, =>
+		$answers.fadeOut animTime, =>
 			$answers.empty();
-			for answer in page.answers
-				@appendAnswer answer, $answers
-			$answers.fadeIn();
+			for i in [0 .. page.answer.length - 1]
+				next = if isDone then -1 else page.next[i]
+				@appendAnswer page.answer[i], next, $answers
+			$answers.fadeIn animTime, ->
+				if isDone
+					alert 'Quiz done !!!'
 
-	appendAnswer: (answer, $answers) ->
+	appendAnswer: (answer, next, $answers) ->
 		$('<div class="answer">' + answer + '</div>')
+			.data('next', next)
 			.appendTo($answers)
-
-	renderFirstPage: ->
-		'use strict'
-		@renderPage 0
-
-	renderNextPage: ->
-		'use strict'
-		@renderPage @index + 1
-
-	renderPrevPage: ->
-		'use strict'
-		@renderPage @index - 1
 
 	run: ->
 		'use strict'
-		@$quiz.find('.answers').on 'click', '.answer', =>
-			@renderNextPage()
+		@$quiz.find('.answers').on 'click', '.answer', (e) =>
+			next = parseInt($(e.target).data 'next')
+			if ~next
+				@renderPage next
+			else
+				console.log '!!!!!'
 		@

@@ -12,7 +12,7 @@ requirejs(['jquery', 'data', 'quiz'], function($, _data, _quiz) {
   return $(function() {
     'use strict';
     _quiz.init(_data);
-    _quiz.renderFirstPage();
+    _quiz.renderPage(0);
     return _quiz.run();
   });
 });
