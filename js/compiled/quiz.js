@@ -9,24 +9,26 @@ define({
     this.$quiz.removeClass('spinner');
     return this;
   },
-  renderPage: function(index) {
+  setIndex: function(index) {
     'use strict';
-    var $answers, animTime, isDone, page,
-      _this = this;
+    var page;
     if (index === this.index || index < 0 || index > this.maxIndex) {
       return;
     }
     this.index = index;
-    page = this.data.pages[this.index];
-    isDone = !page.next;
-    animTime = 80;
-    this.$quiz.find('.question').fadeOut(animTime, function() {
-      $(this).html(page.question + ' ' + index);
-      return $(this).fadeIn(animTime);
-    });
+    page = this.data.pages[index];
+    return this.renderPage(page, !page.next, 100);
+  },
+  renderPage: function(page, isDone, animTime) {
+    'use strict';
+    var $answers, $question,
+      _this = this;
+    $question = this.$quiz.find('.question');
     $answers = this.$quiz.find('.answers');
+    $question.fadeOut(animTime);
     return $answers.fadeOut(animTime, function() {
       var i, next, _i, _ref;
+      $question.html('Level ' + page.level + ': ' + page.question).fadeIn(animTime);
       $answers.empty();
       for (i = _i = 0, _ref = page.answer.length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
         next = isDone ? -1 : page.next[i];
@@ -49,7 +51,7 @@ define({
       var next;
       next = parseInt($(e.target).data('next'));
       if (~next) {
-        return _this.renderPage(next);
+        return _this.setIndex(next);
       } else {
         return console.log('!!!!!');
       }

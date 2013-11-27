@@ -9,21 +9,24 @@ define
 		@$quiz.removeClass 'spinner'
 		@
 
-	renderPage: (index) ->
+	setIndex: (index) ->
 		'use strict'
 		return if index == @index || index < 0 || index > @maxIndex
 		@index = index
-		page = @data.pages[@index]
-		isDone = !page.next
-		animTime = 80
+		page = @data.pages[index]
+		@renderPage page, !page.next, 100
 
-		@$quiz.find('.question')
-			.fadeOut animTime, ->
-				$(@).html page.question + ' ' + index
-				$(@).fadeIn animTime
-
+	renderPage: (page, isDone, animTime) ->
+		'use strict'
+		$question = @$quiz.find '.question'
 		$answers = @$quiz.find '.answers'
+
+		$question.fadeOut animTime
 		$answers.fadeOut animTime, =>
+			$question
+				.html('Level ' + page.level + ': ' + page.question)
+				.fadeIn animTime
+
 			$answers.empty();
 			for i in [0 .. page.answer.length - 1]
 				next = if isDone then -1 else page.next[i]
@@ -42,7 +45,7 @@ define
 		@$quiz.find('.answers').on 'click', '.answer', (e) =>
 			next = parseInt($(e.target).data 'next')
 			if ~next
-				@renderPage next
+				@setIndex next
 			else
 				console.log '!!!!!'
 		@

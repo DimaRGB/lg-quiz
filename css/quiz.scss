@@ -3,6 +3,10 @@ $quiz-width: 900px;
 $shape-width: 162px;
 $shape-size: 15px;
 
+.hidden {
+	display: none;
+}
+
 .quiz {
 	width: $quiz-width;
 	position: relative;
@@ -23,14 +27,19 @@ $shape-size: 15px;
 			height: $shape-width;
 			background: url($imgPath + 'shape.png') no-repeat;
 			background-size: 100%;
-			cursor: pointer;
 			
 			line-height: $shape-width;
 			font-size: $shape-size;
 			text-align: center;
+
+			cursor: pointer;
+			-webkit-user-select: none;
+			-moz-user-select: none;
 		}
 	}
-	.spinner {
+	&.spinner {
+		width: 16px;
+		height: 16px;
 		background: url($imgPath + 'spinner.gif') no-repeat;
 	}
 }
