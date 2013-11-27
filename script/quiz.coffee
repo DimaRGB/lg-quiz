@@ -27,7 +27,7 @@ define
 				.html('Level ' + page.level + ': ' + page.question)
 				.fadeIn animTime
 
-			$answers.empty();
+			$answers.empty()
 			for i in [0 .. page.answer.length - 1]
 				next = if isDone then -1 else page.next[i]
 				@appendAnswer page.answer[i], next, $answers
