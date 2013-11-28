@@ -10,6 +10,7 @@ define [
 		routes:
 			'': 'index'
 			'quiz': 'quiz'
+			'quiz/restart': 'quizRestart'
 			'addresses': 'addresses'
 			'*notFound': 'notFound'
 
@@ -23,6 +24,9 @@ define [
 				.addClass($template.attr 'data-class')
 				.html(_.template $template.html(), data)
 
+		navigateReplace: (url) ->
+    	@navigate url, trigger: true, replace: true
+
 		renderContainer: (name, data) ->
 			$('#container')
 				.html @render name, data
@@ -32,10 +36,12 @@ define [
 
 		quiz: ->
 			@renderContainer 'quiz'
-			quiz
-				.init()
-				.setIndex(0)
-				.run()
+			quiz.init()
+			quiz.setIndex(0)
+			quiz.run()
+
+		quizRestart: ->
+			@navigateReplace 'quiz'
 
 		addresses: ->
 			@renderContainer 'addresses'
