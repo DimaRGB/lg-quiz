@@ -1,10 +1,12 @@
-define
+define [
+	'jquery'
+	'quiz-data'
+], ($, data) ->
 
-	index: -1
-
-	init: (@data = {}) ->
+	init: ->
 		'use strict'
-		@maxIndex = @data.pages.length
+		@index = -1
+		@maxIndex = data.pages.length
 		@$quiz = $ '.quiz'
 		@$quiz.removeClass 'spinner'
 		@
@@ -13,8 +15,9 @@ define
 		'use strict'
 		return if index == @index || index < 0 || index > @maxIndex
 		@index = index
-		page = @data.pages[index]
+		page = data.pages[index]
 		@renderPage page, !page.next, 100
+		@
 
 	renderPage: (page, isDone, animTime) ->
 		'use strict'
@@ -34,11 +37,13 @@ define
 			$answers.fadeIn animTime, ->
 				if isDone
 					alert 'Quiz done !!!'
+		@
 
 	appendAnswer: (answer, next, $answers) ->
 		$('<div class="answer">' + answer + '</div>')
 			.data('next', next)
 			.appendTo($answers)
+		@
 
 	run: ->
 		'use strict'

@@ -9,13 +9,12 @@ require.config
 		backbone:
 			deps: ['jquery', 'underscore']
 			exports: 'Backbone'
-		app:
-			deps: ['backbone']
 
 
 require [
 	'jquery'
-	'app'
-], ($, app) -> $ ->
+	'router'
+], ($, Router) -> $ ->
 	'use strict'
-	app.init()
+	new Router
+	Backbone.history.start()
