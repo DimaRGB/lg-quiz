@@ -36,7 +36,8 @@ define [
 				@appendAnswer page.answer[i], next, $answers
 			$answers.fadeIn animTime, ->
 				if isDone
-					alert 'Quiz done !!!'
+					$('#container')
+						.append(router.render 'quiz-done')
 		@
 
 	appendAnswer: (answer, next, $answers) ->
@@ -52,5 +53,5 @@ define [
 			if ~next
 				@setIndex next
 			else
-				console.log '!!!!!'
+				router.navigate '#/addresses'
 		@

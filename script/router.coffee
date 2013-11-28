@@ -10,28 +10,35 @@ define [
 		routes:
 			'': 'index'
 			'quiz': 'quiz'
+			'addresses': 'addresses'
 			'*notFound': 'notFound'
 
 		initialize: ->
 			console.log 'init router'
 
 		render: (name, data) ->
-			$template = $("[type='text/template'][name='#{name}']")
-			html = _.template $template.html(), data
-			$('#content')
+			$template = $ "[type='text/template'][name='#{name}']"
+			$('<div />')
 				.attr('class', name)
 				.addClass($template.attr 'data-class')
-				.html html
+				.html(_.template $template.html(), data)
+
+		renderContainer: (name, data) ->
+			$('#container')
+				.html @render name, data
 
 		index: ->
-			@render 'index'
+			@renderContainer 'index'
 
 		quiz: ->
-			@render 'quiz'
+			@renderContainer 'quiz'
 			quiz
 				.init()
 				.setIndex(0)
 				.run()
+
+		addresses: ->
+			@renderContainer 'addresses'
 
 		notFound: ->
 			console.log "Page not found: #{Backbone.history.fragment}"

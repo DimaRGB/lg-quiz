@@ -1,3 +1,25 @@
+$container-width: 900px;
 
-@import '_home';
+body {
+	margin: 0;
+	border: 0;
+	padding: 0;
+}
+
+#home {
+	display: block;
+	padding: 10px;
+	text-align: left;
+	font-size: 20px;
+	color: #777;
+}
+
+#container {
+	margin: 0 auto;
+	width: $container-width;
+	text-align: center;
+}
+
+@import '_index';
 @import '_quiz';
+@import '_addresses';

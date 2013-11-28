@@ -16,5 +16,5 @@ require [
 	'router'
 ], ($, Router) -> $ ->
 	'use strict'
-	new Router
+	window.router = new Router
 	Backbone.history.start()
