@@ -74,33 +74,28 @@ define
 	]
 
 	answers:
-		'aaa': 0
-		'aac': 0
-		'aaa': 1
-		'aca': 1
-		'abb': 2
-		'adb': 2
-		'acc': 3
-		'acb': 3
-		'aca': 4
-		'ada': 4
-		'adc': 5
-		'acb': 6
-		'aab': 6
-		'bbb': 7
-		'bdb': 7
-		'bba': 8
-		'bac': 9
-		'bdc': 9
-		'bab': 10
-		'baa': 10
-		'bcb': 10
-		'bca': 10
-		'bac': 11
-		'bbc': 11
-		'bda': 12
-		'bca': 12
-		'bcc': 13
+		'aaa': [0, 1]
+		'aac': [0]
+		'aca': [1, 4]
+		'abb': [2]
+		'adb': [2]
+		'acc': [3]
+		'acb': [3, 6]
+		'ada': [4]
+		'adc': [5]
+		'aab': [6]
+		'bbb': [7]
+		'bdb': [7]
+		'bba': [8]
+		'bac': [9, 11]
+		'bdc': [9]
+		'bab': [10]
+		'baa': [10]
+		'bcb': [10]
+		'bca': [10, 12]
+		'bbc': [11]
+		'bda': [12]
+		'bcc': [13]
 
 	categorys: [
 		'Smartphones'

@@ -35,11 +35,9 @@ define [
 			for i in [0 .. page.answer.length - 1]
 				next = if isDone then -1 else page.next[i]
 				@appendAnswer page.answer[i], next, i, $answers
-			$answers.fadeIn animTime, =>
-				if isDone
-					alert @getCategory()
-					$('#container')
-						.append(router.render 'quiz-done')
+
+			@renderDone() if isDone
+			$answers.fadeIn animTime
 		@
 
 	appendAnswer: (answer, next, answerId, $answers) ->
@@ -49,9 +47,18 @@ define [
 			.appendTo($answers)
 		@
 
+	renderDone: ->
+		router.navigate '#/quiz/done'
+		router
+			.render('quiz-done')
+			.appendTo($('#container'))
+			.find('#category')
+			.html(@getCategory())
+
 	getCategory: ->
 		answer = data.answers[@answerKey.slice 2]
-		data.categorys[answer]
+		categoryId = answer[parseInt Math.random() * answer.length];
+		data.categorys[categoryId]
 
 	run: ->
 		'use strict'
