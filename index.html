@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang='en' dir='ltr'>
 
-<head>
+<head prefix='og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#'>
+	<meta name='viewport' content='width=device-width, maximum-scale=1.0' />
 	<meta charset='utf-8' />
-	<title>facebook quiz</title>
+	<title>LG quiz</title>
+
+	<meta property='og:title' content='LG quiz title' />
+	<meta property='og:url' content='http://dimargb.esy.es' />
+	<meta property='og:image' content='http://dimargb.esy.es/img/share.png' />
+	<meta property='og:description' content='Complete quiz and get your present' />
+
 	<link href='style/main.css' rel='stylesheet' type='text/css' />
-	<script data-main='script/compiled/main' src='script/lib/require.js'></script>
+	<script data-main='script/compiled/main' src='script/lib/require.min.js'></script>
 </head>
 
 <body>
@@ -13,7 +20,7 @@
 
 	<div id='container'></div>
 
-	<!-- Home -->
+	<!-- index -->
 	<script type='text/template' name='index'>
 		<h1>Сумніваєшся, що подарувати близким на новорічні свята?</h1>
 	  <h2>LG допоможе тобі у цьому!</h2>
@@ -21,14 +28,14 @@
 	  <a href='#/quiz'>Почати</a>
 	</script>
 
-	<!-- Quiz -->
+	<!-- quiz -->
 	<script type='text/template' name='quiz' data-class='spinner'>
 		<h2 class='question'></h2>
 		<div class='preview'></div>
 		<div class='answers'></div>
 	</script>
 
-	<!-- Quiz done -->
+	<!-- quiz done -->
 	<script type='text/template' name='quiz-done'>
 		<h1 id='category'></h1>
 		<h3>Найкращі подарунки – це подарунки від LG!</h3>
@@ -37,13 +44,8 @@
 		<div class='share-box'>
 			<h3><b>Бажаєш виграти подарунок від LG?</b></h3>
 			Поділись нашим святковим генератором подарунків та приймай участь у розіграші
-			<a href='#/'>Поділитись</a>
+			<a href='#/social/share'>Поділитись</a>
 		</div>
-	</script>
-
-	<!-- Social auth -->
-	<script type='text/template' name='social-auth'>
-		<a href="#/" class="options-box no-follow" onclick="window.open(&quot;http://www.facebook.com/share.php?u=https%3A%2F%2Fpetitions.whitehouse.gov%2Fpetition%2Fimpose-personal-sanctions-president-ukraine-viktor-yanukovych-and-cabinet-ministers-ukraine-members%2Fh58Fz30V&amp;t=Impose+personal+sanctions+on+President+of+Ukraine+Viktor+Yanukovych+and+Cabinet+of+Ministers+of+Ukraine+members&quot;, &quot;facebook&quot;, &quot;status=0,toolbar=0,location=0,menubar=0,height=500,width=800,resizable=1&quot;); return false;">Facebook</a>
 	</script>
 
 	<!-- addresses -->
@@ -58,6 +60,13 @@
 			<li>м. Київ, вул. Червоноармійська, 33. Ельдорадо</li>
 			<li>м. Київ, вул. Червоноармійська, 44. Ельдорадо</li>
 		</ol>
+	</script>
+
+	<!-- social share-->
+	<script type='text/template' name='social-share'>
+		<h1>Авторизуйся через соціальні мережі</h3>
+		<h3><a href='#/' class='share-btn fb' data-type='fb'>Facebook</a></h3>
+		<h3><a href='#/' class='share-btn vk' data-type='vk'>Vkontakte</a></h3>
 	</script>
 
 </body>

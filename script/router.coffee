@@ -3,7 +3,8 @@ define [
 	'underscore'
 	'backbone'
 	'quiz'
-], ($, _, Backbone, quiz) ->
+	'share'
+], ($, _, Backbone, quiz, share) ->
 
 	Backbone.Router.extend
 
@@ -12,6 +13,7 @@ define [
 			'quiz': 'quiz'
 			'quiz/restart': 'quizRestart'
 			'addresses': 'addresses'
+			'social/share': 'socialShare'
 			'*notFound': 'notFound'
 
 		initialize: ->
@@ -45,6 +47,10 @@ define [
 
 		addresses: ->
 			@renderContainer 'addresses'
+
+		socialShare: ->
+			@renderContainer 'social-share'
+			share.init()
 
 		notFound: ->
 			console.log "Page not found: #{Backbone.history.fragment}"
